@@ -19,7 +19,14 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:5173',
+    'https://lms-frontend-y2x2.onrender.com',
+    'https://mern-stack-lms-livid.vercel.app'
+  ],
+  credentials: true
+}));
 
 // Mount routers
 app.use('/api', userRoutes);
