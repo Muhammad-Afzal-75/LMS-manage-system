@@ -56,7 +56,7 @@ const Home = () => {
               <div className="position-relative ms-lg-5">
                 <div className="position-absolute bg-gradient-primary rounded-circle w-100 h-100 opacity-25 translate-middle top-50 start-50 filter-blur"></div>
                 <img 
-                  src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src="/src/assets/hero.png" 
                   alt="Students learning" 
                   className="img-fluid rounded-4 shadow-lg border border-4 border-white position-relative hover-3d"
                   style={{ zIndex: 2 }}
