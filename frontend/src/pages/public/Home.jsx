@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import CourseCard from '../../components/CourseCard';
 import { PlayCircle, Award, Users, BookOpen, CheckCircle } from 'lucide-react';
 import API from '../../services/api';
+import heroImg from '../../assets/hero.png';
 
 const Home = () => {
   const [popularCourses, setPopularCourses] = useState([]);
@@ -56,7 +57,7 @@ const Home = () => {
               <div className="position-relative ms-lg-5">
                 <div className="position-absolute bg-gradient-primary rounded-circle w-100 h-100 opacity-25 translate-middle top-50 start-50 filter-blur"></div>
                 <img 
-                  src="/src/assets/hero.png" 
+                  src={heroImg} 
                   alt="Students learning" 
                   className="img-fluid rounded-4 shadow-lg border border-4 border-white position-relative hover-3d"
                   style={{ zIndex: 2 }}
