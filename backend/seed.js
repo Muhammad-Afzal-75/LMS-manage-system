@@ -10,7 +10,8 @@ const seedData = async () => {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log('MongoDB Connected for seeding...');
 
-    // Clear existing data
+    // Clear existing data (Optional: comment this out if you want to keep existing data)
+    console.log('Cleaning existing data...');
     await User.deleteMany();
     await Course.deleteMany();
 
