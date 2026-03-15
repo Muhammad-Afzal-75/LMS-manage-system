@@ -2,12 +2,22 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import connectDB from './config/db.js';
+import Course from './models/Course.js';
+import seedData from './seed.js';
 
 // Load env vars
 dotenv.config();
 
 // Connect to database
-connectDB();
+connectDB().then(async () => {
+  if (process.env.NODE_ENV === 'production') {
+    const courseCount = await Course.countDocuments();
+    if (courseCount === 0) {
+      console.log('Production database is empty. Seeding initial data...');
+      await seedData();
+    }
+  }
+});
 
 import userRoutes from './routes/userRoutes.js';
 import courseRoutes from './routes/courseRoutes.js';

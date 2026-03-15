@@ -7,8 +7,10 @@ dotenv.config();
 
 const seedData = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
-    console.log('MongoDB Connected for seeding...');
+    if (mongoose.connection.readyState === 0) {
+      await mongoose.connect(process.env.MONGODB_URI);
+      console.log('MongoDB Connected for seeding...');
+    }
 
     // Clear existing data (Optional: comment this out if you want to keep existing data)
     console.log('Cleaning existing data...');
@@ -108,12 +110,11 @@ const seedData = async () => {
 
     await Course.insertMany(courses);
     console.log('Courses seeded!');
-
-    process.exit();
+    return true;
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    process.exit(1);
+    console.error(`Seed Error: ${error.message}`);
+    return false;
   }
 };
 
-seedData();
+export default seedData;
